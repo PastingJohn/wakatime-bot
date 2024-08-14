@@ -1,6 +1,5 @@
 import discord
 import os
-from dotenv import load_dotenv
 from discord.ext import commands
 import DbModel
 from DbModel import WakaData
@@ -8,7 +7,6 @@ import auth
 import constant
 import json
 import data_parser
-
 
 
 class WakaBot(commands.Bot):
@@ -156,9 +154,7 @@ class WakaBot(commands.Bot):
         print('We have logged in as {0.user}'.format(client))
 
 
-# Load secrets file and get token
-load_dotenv('secrets.env')
-API_TOKEN = os.getenv('DISCORD_TOKEN')
+API_TOKEN = os.environ['DISCORD_TOKEN']
 
 DbModel.init_tables()
 
